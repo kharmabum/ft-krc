@@ -1,10 +1,8 @@
 // http://code.google.com/chrome/extensions/messaging.html
-chrome.extension.onRequest.addListener(
+chrome.extension.onMessage.addListener(
     function(request, sender, sendResponse) {
-        if (request.helper == 'get_note'){
+        if (request.method == 'get_selection'){
             sendResponse({note: document.getSelection().toString()});
-        } else {
-            sendResponse({note: ''}); // snub them.
         }
     }
 );

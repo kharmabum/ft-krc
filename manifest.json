@@ -13,7 +13,7 @@
       {
         "matches": ["<all_urls>"],
         "css": ["css/ft-krc-shell.css"],
-        "js": ["js/jquery-1.9.1.min.js", "js/ft-krc-injection.js", "js/kippt-content.js"],
+        "js": ["js/vendor/jquery.js", "js/ft-krc-injection.js", "js/kippt-content.js"],
         "run_at" : "document_start"
       }
     ],
@@ -49,8 +49,10 @@
     "css/bootstrap.min.css",
     "css/ft-krc.css",
     "css/ft-krc-shell.css",
-    "js/jquery-1.9.1.min.js",
-    "js/bootstrap.min.js",
+    "js/vendor/jquery.js",
+    "js/vendor/bootstrap.js",
+    "js/vendor/spin.js",
+    "js/vendor/tipsy.js",
     "js/ft-krc-internal.js",
     "js/ft-krc-injection.js",
     "img/twinkle_twinkle_bg.png",

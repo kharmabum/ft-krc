@@ -1,6 +1,5 @@
 (function() {
     var createClipInBackground = function (msg) {
-
         // Helper function for clip creation
         var createNewClip = function(msg) {
             // Remove variable 'type', added by Chrome
@@ -66,10 +65,21 @@
         }
     };
 
+
+
+
     // Chrome Message Passing
-    chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+    chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
         if (request.method == 'createNewClip') {
-            createClipInBackground(request.msg);
+            createClipInBackground(request.data);
+        } else if (request.method == 'openTab') {
+            chrome.tabs.create({url: url});
+        } else if (request.method == 'getActiveTab') {
+            chrome.tabs.getCurrent(null, function(tab) {
+                sendResponse(tab);
+            });
+        } else if (request.method == 'toggle') {
+
         }
     });
 })();
