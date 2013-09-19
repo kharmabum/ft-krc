@@ -1,9 +1,8 @@
 .ft-krc-shell {
    position: fixed;
-   top: 0;
-   right: 0;
-   height: 100%;
-   width: 400px;
+   bottom: 0;
+   height: 400px;
+   width: 100%;
    z-index: 5000;
    display: none;
 }

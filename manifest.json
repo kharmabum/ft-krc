@@ -1,7 +1,8 @@
  {
-  "name": "ft-krc",
+  "name": "FT.KRC",
   "manifest_version": 2,
   "description": "Kippt Reading Companion",
+  "homepage_url": "https://blog.fototropik.com",
   "version": "0.0.1",
   "permissions": [
     "tabs",
@@ -12,9 +13,11 @@
       {
         "matches": ["<all_urls>"],
         "css": ["css/ft-krc-shell.css"],
-        "js": ["js/jquery-1.9.1.min.js", "js/ft-krc-injection.js"]
+        "js": ["js/jquery-1.9.1.min.js", "js/ft-krc-injection.js", "js/kippt-content.js"],
+        "run_at" : "document_start"
       }
     ],
+
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "background": {
     "persistent": false,
