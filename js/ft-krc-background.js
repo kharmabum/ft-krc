@@ -1,17 +1,35 @@
-function toggle() {
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {messsage: "toggle"}, function(response) { /* herp derp */ });
-  });
-}
-
+// Keyboard shortcut
 chrome.commands.onCommand.addListener(function(command) {
   toggle();
 });
 
+// Click on browser action button
 chrome.browserAction.onClicked.addListener(function(tab) {
   toggle();
 });
 
+// Chrome Message Passing
+chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.method === 'createNewClip') {
+        createClipInBackground(request.data);
+    } else if (request.method === 'openTab') {
+        chrome.tabs.create({url: request.url});
+    } else if (request.method === 'getActiveTab') {
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, {method: 'getSelection'}, function(selection) {
+                chrome.tabs.sendMessage(tabs[0].id, {method: 'activeTabInfo', tab:tabs[0], selection: selection});
+            });
+        });
+    } else if (request.method === 'toggle') {
+        toggle();
+    }
+});
+
+function toggle() {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {method: "toggle"});
+  });
+}
 
 var createClipInBackground = function (msg) {
     // Helper function for clip creation
@@ -79,25 +97,6 @@ var createClipInBackground = function (msg) {
     }
 };
 
-// Chrome Message Passing
-chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.method == 'createNewClip') {
-        createClipInBackground(request.data);
-    } else if (request.method == 'openTab') {
-        chrome.tabs.create({url: url});
-    } else if (request.method == 'getActiveTab') {
-        chrome.tabs.getCurrent(null, function(tab) {
-            sendResponse(tab);
-        });
-    } else if (request.method == 'getSelectedText') {
-        chrome.tabs.getCurrent(null, function(tab) {
-          chrome.tabs.sendMessage(tab.id, {method: 'get_selection'}, function(response) {
-            sendResponse(response);
-          });
-        });
-    } else if (request.method == 'toggle') {
-        toggle();
-    }
-});
+
 
 

@@ -2,7 +2,7 @@
   "name": "FT.KRC",
   "manifest_version": 2,
   "description": "Kippt Reading Companion",
-  "homepage_url": "https://blog.fototropik.com",
+  "homepage_url": "https://www.fototropik.com",
   "version": "0.0.1",
   "permissions": [
     "tabs",
@@ -13,7 +13,7 @@
       {
         "matches": ["<all_urls>"],
         "css": ["css/ft-krc-shell.css"],
-        "js": ["js/vendor/jquery.js", "js/ft-krc-injection.js", "js/kippt-content.js"],
+        "js": ["js/vendor/jquery.js", "js/ft-krc-injection.js"],
         "run_at" : "document_start"
       }
     ],
@@ -57,6 +57,8 @@
     "js/ft-krc-injection.js",
     "img/twinkle_twinkle_bg.png",
     "img/icon_48.png",
+    "img/extension-icons.png",
+    "img/extension-sprite.png",
     "fonts/glyphicons-halflings-regular.eot",
     "fonts/glyphicons-halflings-regular.svg",
     "fonts/glyphicons-halflings-regular.ttf",
