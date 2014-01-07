@@ -7,10 +7,6 @@ Keyboard shortcuts:
   - default: Ctrl+Shift+K
   - mac: Command+Shift+K
 
-## Features
-
-- Lots of awesome.
-
 ## Screenshot
 
 ![screenie](http://i.imgur.com/vEyXujo.png)
