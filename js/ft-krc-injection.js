@@ -6,7 +6,7 @@ $(function() {
             if (request.method === "toggle") {
                 if ($(".ft-krc-shell").length === 0) {
                     var url = chrome.extension.getURL("../ft-krc.html");
-                    $("body").append("<div class='ft-krc-shell'><iframe src='" + url + "' height='100%' width='100%' name='ft-krc'></iframe></div>");
+                    $("html").append("<div class='ft-krc-shell'><iframe src='" + url + "' height='100%' width='100%' name='ft-krc'></iframe></div>");
                     $(".ft-krc-shell").animate({ 'height': "360px" }, 200);
                     isVisible = true;
                 } else {
